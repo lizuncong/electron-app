@@ -1,24 +1,37 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1800,
     height: 600,
+    transparent: true,
+    frame: false,
+    alwaysOnTop: true,
+    fullscreenable: true,
+    fullscreen: true,
+    simpleFullscreen: true,
+    // maximizable: false,
+    // resizable: false,
     webPreferences: {
+      // devTools: false,
       preload: path.join(__dirname, 'preload.js'),
-      // nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false,
     }
   })
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-
+  require("@electron/remote/main").enable(mainWindow.webContents)
   // Open the DevTools.
-  mainWindow.webContents.openDevTools()
-
+  // mainWindow.webContents.openDevTools()
+  ipcMain.on('message11', (event, arg) => {
+    console.log('主进程接收到信息。。。', arg)
+    event.reply('reply', 'hello from main process')
+  })
   // const secondWindow = new BrowserWindow({
   //   width: 400,
   //   height: 300,
@@ -34,6 +47,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  require('@electron/remote/main').initialize()
   createWindow()
 
   app.on('activate', function () {
