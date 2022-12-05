@@ -12,7 +12,7 @@ function createWindow() {
     alwaysOnTop: true,
     fullscreenable: true,
     fullscreen: true,
-    simpleFullscreen: true,
+    simpleFullscreen: true, // 在mac上需要设置这个属性，有点区别
     // maximizable: false,
     // resizable: false,
     webPreferences: {
