@@ -4,6 +4,7 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
+    "app:dist": "electron-builder",
     "start": "nodemon --watch main.js --exec \"electron .\""
   },
   "repository": "https://github.com/lizuncong/electron-app",
@@ -17,10 +18,17 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
+    "electron-builder": "^23.6.0",
     "electron": "^21.1.1"
   },
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "nodemon": "^2.0.20"
+  },
+  "build": {
+    "appId": "zcl123456",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   }
 }

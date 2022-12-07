@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
-    />
-    <link href="./styles.css" rel="stylesheet" />
-    <title>Hello World!</title>
-    <style>
-      body {
-        background-color: transparent;
-      }
-      .block {
-        width: 200px;
-        height: 80px;
-        position: fixed;
-        background-color: red;
-        bottom: 0;
-      }
-      .left {
-        left: 0;
-      }
-      .right {
-        right: 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="left" class="block left">Left Bottom</div>
-    <div id="right" class="block right">Right Bottom</div>
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'" />
+  <link href="./styles.css" rel="stylesheet" />
+  <title>Hello World!</title>
+  <style>
+    body {
+      background-color: transparent;
+    }
+
+    .block {
+      width: 200px;
+      height: 80px;
+      position: fixed;
+      background-color: red;
+      bottom: 50px;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+    .float{
+      left: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left" class="block left">1</div>
+  <div id="right" class="block right">1</div>
+  <div id="float" class="block float">可以拖动的元素</div>
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+</body>
+
 </html>

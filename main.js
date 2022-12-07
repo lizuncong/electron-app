@@ -5,14 +5,14 @@ const path = require('path')
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 1800,
+    width: 1000,
     height: 600,
-    transparent: true,
-    frame: false,
-    alwaysOnTop: true,
-    fullscreenable: true,
-    fullscreen: true,
-    simpleFullscreen: true, // 在mac上需要设置这个属性，有点区别
+    // transparent: true,
+    // frame: false,
+    // alwaysOnTop: true,
+    // fullscreenable: true,
+    // fullscreen: true,
+    // simpleFullscreen: true, // 在mac上需要设置这个属性，有点区别
     // maximizable: false,
     // resizable: false,
     webPreferences: {
@@ -22,15 +22,26 @@ function createWindow() {
       contextIsolation: false,
     }
   })
-
+  const host = 'http://localhost:3000'
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL(`${host}/demo`)
+  // mainWindow.setAlwaysOnTop(true, 'pop-up-menu')
   require("@electron/remote/main").enable(mainWindow.webContents)
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
-  ipcMain.on('message11', (event, arg) => {
-    console.log('主进程接收到信息。。。', arg)
-    event.reply('reply', 'hello from main process')
+  mainWindow.webContents.openDevTools()
+  ipcMain.on('go-to-page', (event, arg) => {
+    console.log('receive message from render process:', arg)
+    const dashWindow = new BrowserWindow({
+      width: 200,
+      height: 200,
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      }
+    })
+    console.log(`${host}/${arg.path}`)
+    dashWindow.loadURL(`${host}${arg.path}`)
+    event.reply('reply', '创建窗口成功')
   })
   // const secondWindow = new BrowserWindow({
   //   width: 400,
