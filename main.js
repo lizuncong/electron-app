@@ -7,16 +7,7 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
-    // transparent: true,
-    // frame: false,
-    // alwaysOnTop: true,
-    // fullscreenable: true,
-    // fullscreen: true,
-    // simpleFullscreen: true, // 在mac上需要设置这个属性，有点区别
-    // maximizable: false,
-    // resizable: false,
     webPreferences: {
-      // devTools: false,
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
       contextIsolation: false,
@@ -29,29 +20,6 @@ function createWindow() {
   require("@electron/remote/main").enable(mainWindow.webContents)
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
-  ipcMain.on('go-to-page', (event, arg) => {
-    console.log('receive message from render process:', arg)
-    const dashWindow = new BrowserWindow({
-      width: 200,
-      height: 200,
-      webPreferences: {
-        nodeIntegration: true,
-        contextIsolation: false,
-      }
-    })
-    console.log(`${host}/${arg.path}`)
-    dashWindow.loadURL(`${host}${arg.path}`)
-    event.reply('reply', '创建窗口成功')
-  })
-  // const secondWindow = new BrowserWindow({
-  //   width: 400,
-  //   height: 300,
-  //   webPreferences: {
-  //     nodeIntegration: true
-  //   },
-  //   parent: mainWindow
-  // })
-  // secondWindow.loadFile('child.html')
 }
 
 // This method will be called when Electron has finished
