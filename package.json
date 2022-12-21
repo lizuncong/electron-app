@@ -2,10 +2,10 @@
   "name": "electron-app",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "./src/main.js",
   "scripts": {
     "app:dist": "electron-builder",
-    "start": "nodemon --watch main.js --exec \"electron .\""
+    "start": "nodemon --watch src --exec \"electron .\""
   },
   "repository": "https://github.com/lizuncong/electron-app",
   "keywords": [
@@ -19,10 +19,9 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron-builder": "^23.6.0",
-    "electron": "^21.1.1"
+    "electron": "8.5.1"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.8",
     "nodemon": "^2.0.20"
   },
   "build": {
