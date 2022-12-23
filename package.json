@@ -18,11 +18,12 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron-builder": "^23.6.0",
-    "electron": "8.5.1"
+    "electron": "8.5.1",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "qs": "^6.11.0"
   },
   "build": {
     "appId": "zcl123456",
