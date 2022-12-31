@@ -27,6 +27,12 @@ const createWindow = () => {
   win.webContents.on(
     "new-window",
     (event, url, frameName, disposition, options, additionalFeatures) => {
+      console.log('event....', event)
+      console.log('url....', url)
+      console.log('disposition....', disposition)
+      console.log('options....', options)
+      console.log('additionalFeatures....', additionalFeatures)
+
       const frameOptions = parse(frameName) || {};
       for (let key in frameOptions) {
         const v = frameOptions[key];
