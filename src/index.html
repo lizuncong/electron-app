@@ -2,21 +2,20 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
     <title>Hello from Electron renderer!</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    
+    </style>
   </head>
   <body>
-    <div>
-        这是授课助手
+    <div style="background: red; padding: 20px 0; -webkit-app-region: drag">
+      header
     </div>
-    <button id="btn">打开教师端页面</button>
+    <div style="background: white">这是授课助手</div>
+    <button style="background: white" id="btn">打开教师端页面</button>
   </body>
   <script src="./renderer.js"></script>
 </html>
