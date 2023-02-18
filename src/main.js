@@ -1,43 +1,70 @@
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, ipcMain, BrowserWindow } = require("electron");
 const path = require("path");
 const { parse } = require("qs");
-// require('./class')
 
-const createWindow = () => {
-  const win = new BrowserWindow({
-    // width: 200,
-    // height: 200,
-    // x: 0,
-    // y: 0,
-    fullscreen: true,
-    /** 透明窗口属性 **/
-    transparent: true,
-    backgroundColor: '#00000000',
-    alwaysOnTop: true,
-    // resizable: false,
-    // movable: false,
-    frame: false,
+let count = 0;
+const createWindow = async () => {
+  const mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "./airclass/preload.js"),
+      preload: path.join(__dirname, "preload.js"),
+      nativeWindowOpen: true,
       contextIsolation: true,
-      nativeWindowOpen: true, // 如果要在render进程中通过window.open打开新的窗口，则需要设置这个值为true
     },
   });
+  mainWindow.webContents.on(
+    "new-window",
+    (event, url, frameName, disposition, options, additionalFeatures) => {
+      const frameOptions = parse(frameName) || {};
+      for (const key in frameOptions) {
+        const v = frameOptions[key];
+        if (v === "true" || v === "false" || !isNaN(Number(v))) {
+          frameOptions[key] = JSON.parse(v);
+        }
+      }
+      if (frameOptions.__portalType === "modal") {
+        event.preventDefault();
+        options = {
+          ...options,
+          ...frameOptions,
+          hasShadow: false,
+          // skipTaskbar: true,
+        };
+        try {
+          let wind = new BrowserWindow(options);
+          // wind.webContents.openDevTools()
+          event.newGuest = wind;
 
-  win.loadFile(path.join(__dirname, "./index.html"));
-  // win.webContents.openDevTools();
+          wind.on("closed", (event) => {
+            console.log('子窗口关闭了======')
+            wind = null;
+            event.newGuest = null;
+          });
+          // myWindows.push(wind);
+        } catch (error) {
+          console.log("error....====", erro);
+        }
+      }
+    }
+  );
+  mainWindow.loadURL("http://localhost:3000/");
+
+  // mainWindow.loadFile(path.join(__dirname, "index.html"));
+
 };
+
 app.whenReady().then(() => {
   createWindow();
+  ipcMain.on("open-window", (event, data) => {
+    console.log("receivemessage from render");
+    createWindow();
+  });
   app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
 
 app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit();
-  }
+  if (process.platform !== "darwin") app.quit();
 });

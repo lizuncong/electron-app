@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Hello from Electron renderer!</title>
-    <style>
-      body {
-        margin: 0;
-      }
-    
-    </style>
-  </head>
-  <body>
-    <div style="background: red; padding: 20px 0; -webkit-app-region: drag">
-      header
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Hello World!</title>
+  <!-- <script defer="" src="./renderer.js"></script> -->
+</head>
+
+<body>
+  <div id="memory"></div>
+  <div>
+    <button id="clear">清空缓存</button>
+  </div>
+    <div>
+      <button id="open">打开窗口</button>
     </div>
-    <div style="background: white">这是授课助手</div>
-    <button style="background: white" id="btn">打开教师端页面</button>
-  </body>
-  <script src="./renderer.js"></script>
+  <h1>Hello World!</h1>
+  <!-- <img src="./imgs/1.jpg" alt=""> -->
+  <!-- <img src="./imgs/1.jpg" alt="">
+  <img src="./imgs/2.jpg" alt="">
+  <img src="./imgs/2.png" alt="">
+  <img src="./imgs/3.png" alt="">
+  <img src="./imgs/4.jpg" alt="">
+  <img src="./imgs/5.gif" alt=""> -->
+</body>
+
 </html>
