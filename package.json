@@ -5,7 +5,7 @@
   "main": "./src/main.js",
   "scripts": {
     "app:dist": "electron-builder",
-    "start": "nodemon --watch src --exec \"electron .\""
+    "start": "nodemon --watch src --exec \"electron .\" --js-flags=\"--expose-gc\""
   },
   "repository": "https://github.com/lizuncong/electron-app",
   "keywords": [
