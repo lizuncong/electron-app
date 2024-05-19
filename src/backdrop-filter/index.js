@@ -3,7 +3,7 @@ const { app, ipcMain, BrowserWindow } = require("electron");
 const path = require("path");
 const { parse } = require("qs");
 
-
+// https://blog.csdn.net/weixin_33744799/article/details/112955168
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
