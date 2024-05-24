@@ -16,7 +16,7 @@ function createWindow () {
   })
 
   win.loadFile(path.join(__dirname,'./index.html'))
-  win.setVibrancy('ultra-dark')
+  win.setVibrancy('appearance-based')
 }
 
 app.whenReady().then(() => {
