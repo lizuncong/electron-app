@@ -52,34 +52,9 @@ const createWindow = async () => {
   // mainWindow.webContents.openDevTools();
 };
 
-const createChildWindow = () => {
-  const mainWindow = new BrowserWindow({
-    width: 500,
-    height: 800,
-    x: 100,
-    webPreferences: {
-      preload: path.join(__dirname, "./preload.js"),
-      nativeWindowOpen: true,
-      contextIsolation: true,
-    },
-  });
-  mainWindow.loadURL("http://localhost:3000/images");
-  // mainWindow.webContents.openDevTools();
 
-  // mainWindow.loadFile(path.join(__dirname, "child.html"));
-};
-
+console.log('app...', require('electron'))
 app.whenReady().then(() => {
-  createWindow();
-  ipcMain.on("open-window", (event, data) => {
-    console.log("receivemessage from render");
-    createChildWindow();
-  });
-  ipcMain.handle("get-main-process-id", (event) => {
-    return {
-      pid: process.pid
-    }
-  });
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
