@@ -34,7 +34,7 @@ const createWindow = async () => {
           event.newGuest = wind;
 
           wind.on("closed", (event) => {
-            console.log("子窗口关闭了======");
+            console.log("child window close======");
             wind = null;
             event.newGuest = null;
           });

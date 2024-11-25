@@ -1,9 +1,9 @@
 ## 环境
-- node：>14
+- node：16 or > 16
 
 ## 运行
-- yarn install
-- yarn run start
+- npm install
+- npm run start。（需要先启动web服务，见下面的依赖部分）
 
 
 ## 依赖
