@@ -49,12 +49,12 @@ const createWindow = async () => {
   mainWindow.loadURL("http://localhost:3000/");
 
   // mainWindow.loadFile(path.join(__dirname, "index.html"));
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 
-console.log('app...', require('electron'))
 app.whenReady().then(() => {
+  createWindow()
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
