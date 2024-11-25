@@ -49,7 +49,7 @@ const createWindow = async () => {
   mainWindow.loadURL("http://localhost:3000/");
 
   // mainWindow.loadFile(path.join(__dirname, "index.html"));
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 
