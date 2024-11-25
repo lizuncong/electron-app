@@ -29,10 +29,20 @@ src/window-open/build目录下已经有一个提前打包好的前端资源，�
 ## 效果
 在web端的效果如下，当在web端点击打开子窗口时，是以Modal的方式打开：
 
+
+<img src="./docs/web.gif">
+
+
+
 <img src="./docs/web.png" style="height: 300px">
 
 
 而在Electron客户端点击打开子窗口时，是以独立窗口的方式打开：
+
+
+<img src="./docs/electron.gif">
+
+
 
 <img src="./docs/electron_01.png" style="height: 300px">
 
