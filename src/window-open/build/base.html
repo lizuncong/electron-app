@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>基本原理</title>
+    <style>
+      div {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="addCount">计数器： 0</div>
+    <button id="openBtn">通过window open打开弹窗</button>
+    <script>
+      let count = 0;
+
+      const childCount = document.createElement("div");
+      childCount.onclick = () => {
+        count++;
+        console.log("点击子窗口：", count);
+        render();
+      };
+      openBtn.onclick = () => {
+        const externalWindow = window.open("", "modal", "width=300,height=300");
+        externalWindow.document.body.appendChild(childCount);
+        render();
+      };
+
+      addCount.onclick = () => {
+        count++;
+        console.log("点击父窗口：", count);
+        render();
+      };
+
+      const render = () => {
+        addCount.innerText = `计数器：${count}`;
+        childCount.innerText = `计数器：${count}`;
+      };
+    </script>
+  </body>
+</html>

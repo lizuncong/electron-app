@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_template=self.webpackChunkreact_template||[]).push([[535],{3535:(e,t,a)=>{a.r(t),a.d(t,{default:()=>s});var l=a(5043),c=a(579);const s=l.memo((()=>(console.log("WebPlatformtable"),(0,c.jsx)("div",{children:"webTable"}))))}}]);
+//# sourceMappingURL=535.21417d72.chunk.js.map

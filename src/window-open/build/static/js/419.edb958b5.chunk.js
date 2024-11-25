@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_template=self.webpackChunkreact_template||[]).push([[419],{2419:(e,t,a)=>{a.r(t),a.d(t,{default:()=>c});a(5043);var l=a(579);const c=()=>(console.log("WebPlatformbutton"),(0,l.jsx)("div",{children:"Web Button"}))}}]);
+//# sourceMappingURL=419.edb958b5.chunk.js.map

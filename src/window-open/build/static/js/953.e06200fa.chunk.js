@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_template=self.webpackChunkreact_template||[]).push([[953],{2953:(e,l,t)=>{t.r(l),t.d(l,{default:()=>c});t(5043);var a=t(579);const c=()=>(console.log("ElectronPlatformTable"),(0,a.jsx)("div",{children:"ElectronTable"}))}}]);
+//# sourceMappingURL=953.e06200fa.chunk.js.map

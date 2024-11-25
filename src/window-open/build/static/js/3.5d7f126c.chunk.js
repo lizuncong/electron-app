@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_template=self.webpackChunkreact_template||[]).push([[3],{8003:(e,o,t)=>{t.r(o),t.d(o,{goToNewPage:()=>r});const{BrowserWindow:a}=window.require("@electron/remote"),r=()=>{console.log("goToNewPageElectron");new a({width:200,height:200}).loadURL("http://localhost:3000/dashboard")}}}]);
+//# sourceMappingURL=3.5d7f126c.chunk.js.map
